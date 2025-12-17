@@ -1,7 +1,12 @@
 #!/bin/bash
+set -e
 
-sed -i "s/my_cert/$ssl_certificate/g" /etc/nginx/sites-available/default
-sed -i "s/my_key/$ssl_certificate_key/g" /etc/nginx/sites-available/default
-sed -i "s/DOMAIN_NAME/$nginx_domain/g" /etc/nginx/sites-available/default
+if [ ! -f /etc/ssl/certs/nginx.crt ]; then
+    openssl req -x509 -nodes -days 365 \
+        -newkey rsa:2048 \
+        -keyout /etc/ssl/private/jcameira.key \
+        -out /etc/ssl/certs/jcameira.certs \
+        -subj "/C=PT/ST=Lisbon/L=Lisbon/O=42Lisbon/OU=jcameira/CN=jcameira.42.fr"
+fi
 
-nginx -g "daemon off;"
+exec nginx -g "daemon off;"

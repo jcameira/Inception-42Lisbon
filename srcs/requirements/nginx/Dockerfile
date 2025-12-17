@@ -1,18 +1,20 @@
-FROM debian:Bookworm
+FROM debian:bookworm
 
 RUN apt -y update && apt install -y \
     nginx \
-    openssl
+    openssl \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-    -keyout /etc/ssl/private/jcameira.key \
-    -out /etc/ssl/certs/jcameira.crt \
-    -subj "/C=PT/ST=Lisbon/L=Lisbon/O=42Lisbon/OU=jcameira/CN=jcameira.42.fr"
+RUN rm -f /etc/nginx/sites-enabled/default
 
-COPY ./tools/nginx_script.sh ./tmp/nginx_script.sh
+COPY conf/default /etc/nginx/sites-available/default
 
-RUN chmod +x ./tmp/nginx_script.sh
+RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 
-COPY ./conf/default /etc/nginx/sites-available/default
+COPY tools/nginx_script.sh tmp/nginx_script.sh
 
-CMD [ "./tmp/nginx_script.sh" ]
+RUN chmod +x tmp/nginx_script.sh
+
+EXPOSE 443
+
+ENTRYPOINT [ "tmp/nginx_script.sh" ]
