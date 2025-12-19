@@ -26,6 +26,12 @@ define('SECURE_AUTH_SALT', 'yN_riY:ACx]IkigDTpdDagS5{?kpzy~(Q~N)&OAQ6>p$V~9-.eP?
 define('LOGGED_IN_SALT',   '()|?Sk; W=a[o,Y#T6W|^OaTeFx=4|s[,x{#h83;,4u+O:hVeNfpWJ_ #&+)KP:N');
 define('NONCE_SALT',       '393uA]X]IY&vAtVHhLCK1u(~ADrMo~ #+x+q7nuf-j:xL [QcboR`#eAm&KH?K+R');
 
+define( 'WP_REDIS_HOST', 'redis' );
+define( 'WP_REDIS_PORT', 6379 );     
+
+
+define('WP_CACHE', true);
+
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );
 }

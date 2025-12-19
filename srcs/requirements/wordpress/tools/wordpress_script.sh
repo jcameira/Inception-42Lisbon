@@ -38,10 +38,19 @@ if ! wp core is-installed --allow-root; then
     wp user create "${WP_USER}" "${WP_EMAIL}" --role=author --user_pass="${WP_PWD}" --allow-root
 fi
 
+#install the Redis object cache plugin
+wp plugin install redis-cache --activate --allow-root
+
+#update all plugins to current latest version
+wp plugin update --all --allow-root
+
 #modifies PHP-FPM to listen on tcp port 9000
 sed -i 's/listen = \/run\/php\/php8.2-fpm.sock/listen = 9000/g' /etc/php/8.2/fpm/pool.d/www.conf
 
 #test for runtime directory, creates it if it doesn't exist (it should exist already)
 mkdir -p /run/php
+
+#enables redis
+wp redis enable --allow-root
 
 exec php-fpm8.2 -F

@@ -24,4 +24,4 @@ RUN chmod +x /usr/local/bin/mariadb_script.sh
 # DOES NOT publish the port to the host machine
 EXPOSE 3306
 
-ENTRYPOINT ["/usr/local/bin/mariadb_script.sh"]
+CMD ["/usr/local/bin/mariadb_script.sh"]

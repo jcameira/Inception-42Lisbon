@@ -9,6 +9,7 @@ RUN apt update && apt install -y \
     php8.2-mbstring \
     php8.2-xml \
     php8.2-zip \
+    php8.2-redis \
     mariadb-client \
     curl \
     unzip \
@@ -33,4 +34,4 @@ RUN chmod +x /usr/local/bin/wordpress_script.sh
 # DOES NOT publish the port to the host machine
 EXPOSE 9000
 
-ENTRYPOINT ["/usr/local/bin/wordpress_script.sh"]
+CMD ["/usr/local/bin/wordpress_script.sh"]
