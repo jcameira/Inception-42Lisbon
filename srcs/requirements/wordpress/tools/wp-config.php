@@ -1,8 +1,8 @@
 <?php
 
-define( 'DB_NAME', ${MYSQL_DATABASE} );
-define( 'DB_USER', ${MYSQL_USER} );
-define( 'DB_PASSWORD', ${MYSQL_PASSWORD} );
+define( 'DB_NAME', 'wordpress' );
+define( 'DB_USER', 'jcameira' );
+define( 'DB_PASSWORD', '12345' );
 define( 'DB_HOST', 'mariadb' );
 define( 'DB_CHARSET', 'utf8' );
 

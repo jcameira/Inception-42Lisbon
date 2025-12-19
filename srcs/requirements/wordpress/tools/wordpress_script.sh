@@ -1,8 +1,5 @@
 #!/bin/bash
 
-#IMPORTANT LINE, CAUSES SCRIPT TO EXIT IMMEDIATELY SHOULD ANY LINE FAILS (very useful)
-set -e
-
 # create directory to use in nginx container later and also to setup the wordpress conf
 mkdir -p /var/www/html
 
@@ -34,10 +31,12 @@ until mysqladmin ping -h"mariadb" -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" --silent; 
     sleep 1
 done
 
-wp core install --url=$DOMAIN_NAME/ --title=$WP_TITLE --admin_user=$WP_ADMIN_USER \
-    --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL --allow-root
+if ! wp core is-installed --allow-root; then
+    wp core install --url=${DOMAIN_NAME}/ --title=${WP_TITLE} --admin_user=${WP_ADMIN_USER} \
+        --admin_password=${WP_ADMIN_PWD} --admin_email=${WP_ADMIN_EMAIL} --allow-root
 
-wp user create "$WP_USER" "$WP_EMAIL" --role=author --user_pass="$WP_PWD" --allow-root
+    wp user create "${WP_USER}" "${WP_EMAIL}" --role=author --user_pass="${WP_PWD}" --allow-root
+fi
 
 #modifies PHP-FPM to listen on tcp port 9000
 sed -i 's/listen = \/run\/php\/php8.2-fpm.sock/listen = 9000/g' /etc/php/8.2/fpm/pool.d/www.conf

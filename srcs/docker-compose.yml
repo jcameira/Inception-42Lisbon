@@ -11,6 +11,7 @@ services:
       - "3306"
     networks:
       - inception
+    restart: always
   
   wordpress:
     build: ./requirements/wordpress
@@ -26,6 +27,7 @@ services:
       - "9000"
     networks:
       - inception
+    restart: always
 
   nginx:
     build: ./requirements/nginx
@@ -33,12 +35,15 @@ services:
     container_name: nginx
     volumes:
       - wordpress_data:/var/www/html
+    env_file:
+      - .env
     depends_on:
       - wordpress
     ports:
       - "443:443"
     networks:
       - inception
+    restart: always
 
 volumes:
   mariadb_data:
