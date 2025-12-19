@@ -2,6 +2,8 @@
 
 if [ ! -f "/etc/vsftpd/vsftpd.conf.bak" ]; then
 
+    mkdir -p /var/run/vsftpd/empty
+
     mkdir -p /var/www/html
 
     adduser $FTP_USER --disabled-password

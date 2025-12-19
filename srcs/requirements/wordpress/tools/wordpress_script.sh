@@ -9,22 +9,27 @@ chmod -R 755 /var/www/html
 
 cd /var/www/html
 
-rm -rf *
+#rm -rf *
 
-#download wp-cli, a tool for managing wordpress through a command line interface
-curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+# Install wp-cli only once
+if [ ! -f /usr/local/bin/wp ]; then
+    #download wp-cli, a tool for managing wordpress through a command line interface
+    curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
-#give executable rights to wp-cli.phar
-chmod +x wp-cli.phar
+    #give executable rights to wp-cli.phar
+    chmod +x wp-cli.phar
 
-#move it into system path for global use of "wp"
-mv wp-cli.phar /usr/local/bin/wp
+    #move it into system path for global use of "wp"
+    mv wp-cli.phar /usr/local/bin/wp
+fi
 
-#download wordpress using wp-cli
-wp core download --path=/var/www/html --allow-root
+# Download WordPress only if not present
+if [ ! -f wp-config.php ]; then
+    wp core download --path=/var/www/html --allow-root
 
-#copy the default sample config to a real config file
-cp /usr/local/bin/wp-config.php /var/www/html/wp-config.php
+    #copy the default sample config to a real config file
+    cp /usr/local/bin/wp-config.php /var/www/html/wp-config.php
+fi
 
 #wait until mariadb is ready to accept connections
 until mysqladmin ping -h"mariadb" -u"$MYSQL_USER" -p"$MYSQL_PASSWORD" --silent; do

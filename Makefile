@@ -30,6 +30,9 @@ clean:
 
 	@docker system prune -a -f
 
+fclean: clean
+	@docker volume rm $(docker volume ls -q)
+
 logs_maria:
 
 	@docker compose logs -f ./srcs/docker-compose.yml mariadb
@@ -45,3 +48,7 @@ logs_wordpress:
 logs_redis:
 
 	@docker compose logs -f ./srcs/docker-compose.yml redis
+
+logs_ftp:
+
+	@docker compose logs -f ./srcs/docker-compose.yml ftp
