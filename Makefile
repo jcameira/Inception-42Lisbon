@@ -31,7 +31,7 @@ clean:
 	@docker system prune -a -f
 
 fclean: clean
-	@docker volume rm $(docker volume ls -q)
+	@docker volume rm $$(docker volume ls -q)
 
 logs_maria:
 
