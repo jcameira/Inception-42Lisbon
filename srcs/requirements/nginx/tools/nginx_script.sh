@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# this is used to generate an SSL certificate. 
+# since it is self-signed, it will trigger some security concens.
+
 if [ ! -f /etc/ssl/certs/nginx.crt ]; then
     openssl req -x509 -nodes -days 365 \
         -newkey rsa:2048 \

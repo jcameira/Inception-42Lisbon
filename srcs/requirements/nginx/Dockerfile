@@ -11,10 +11,10 @@ COPY conf/default /etc/nginx/sites-available/default
 
 RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
 
-COPY tools/nginx_script.sh tmp/nginx_script.sh
+COPY tools/nginx_script.sh /usr/local/bin/nginx_script.sh
 
-RUN chmod +x tmp/nginx_script.sh
+RUN chmod +x /usr/local/bin/nginx_script.sh
 
 EXPOSE 443
 
-ENTRYPOINT [ "tmp/nginx_script.sh" ]
+ENTRYPOINT [ "/usr/local/bin/nginx_script.sh" ]
