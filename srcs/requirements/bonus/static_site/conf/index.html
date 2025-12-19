@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ugly Docker Project</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<div class="container">
+		<h1>Welcome to my InceptionProject!</h1>
+		<div class="project-description">
+			<p>This is the Bonus Static-Site.</p>
+			<p>Inception uses the docker-compose tools to create a Docker Container network of services.</p>
+			<p></p>
+		</div>
+
+		<h2>Docker Containers List</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Container Name</th>
+					<th>Description</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- Add your Docker container entries here -->
+				<tr>
+					<td>Nginx with https support</td>
+					<td>entry point webserver, with reserve proxy to Adminier and Sttic-Site</td>
+					<td>Married</td>
+				</tr>
+				<tr>
+					<td>WordPress with php-fpm</td>
+					<td><a href="/" class="link-card">webpage served bynginx</a></td>
+					<td>hopefully running</td>
+				</tr>
+				<tr>
+					<td>MariaDB</td>
+					<td>database, wordpress and adminer link here</td>
+					<td>if not crashed, running</td>
+				</tr>
+
+				<tr>
+					<td colspan="3">BONUS</td>
+
+				</tr>
+				<tr>
+					<td>redis cache</td>
+					<td>provides cache support to wordpress</td>
+					<td>check within wirdpress</td>
+				</tr>
+				<tr>
+					<td>FTP server</td>
+					<td>vsftpd light ftpserver</td>
+					<td>there's a script for that</td>
+				</tr>
+				<tr>
+					<td>static website</td>
+					<td><a href="/static">you are here</a></td>
+					<td>if you can read this, then it's working</td>
+				</tr>
+				<tr>
+					<td>Adminer</td>
+					<td><a href="/adminer">database management tool</a></td>
+					<td>click the link and find out</td>
+				</tr>
+				<tr>
+					<td>Cadvisor</td>
+					<td>a dashboard for you to keep track of your containers</td>
+					<td>Telegram is making an offer</td>
+				</tr>
+				<tr>
+					<td colspan="3">VOLUMES - permanent storageoutside of containers</td>
+
+				</tr>
+				<tr>
+					<td>wordpress volume</td>
+					<td>keeps wordpress data and assets</td>
+					<td>use 'ls'</td>
+				</tr>
+				<tr>
+					<td>mariadbvolume</td>
+					<td>permanent database for wordpress</td>
+					<td>use 'ls'</td>
+				</tr>
+				<tr>
+					<td colspan="3">DOCKER NETWORD</td>
+
+				</tr>
+				<tr>
+					<td>docker network</td>
+					<td>internal network between the project containers</td>
+					<td>docker ps, should help</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="footer">
+			<p>jcameira - 42Lisboa - Inception static-site</p>
+			<img src="neon-color-flash-neon-colors.gif" alt="blinking gif" class="blinking-gif">
+		</div>
+	</div>
+</body>
+
+</html>

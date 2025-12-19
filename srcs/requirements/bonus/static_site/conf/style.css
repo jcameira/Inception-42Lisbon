@@ -1,0 +1,94 @@
+/* Let's make this page as awful as possible */
+body {
+	background-image: url('squares.gif'); /* Replace with your own tiled image URL */
+	background-repeat: repeat; /* Make the background image tile */
+    background-color: #0000FF; /* Bright blue background */
+    color: #FFFF00; /* Neon yellow text */
+	font-family: 'Verdana', sans-serif;
+
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+}
+
+.container {
+    margin: 50px;
+}
+
+h1 {
+    font-size: 3em;
+    color: #FF00FF; /* Hot pink */
+    text-decoration: underline;
+    font-family: 'Impact', sans-serif;
+    animation: blinkText 1s step-end infinite;
+}
+
+h2 {
+    font-size: 2em;
+    color: #00FF00; /* Bright green */
+    text-shadow: 2px 2px 5px #000000;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.project-description {
+    background-color: #FFFF00;
+    color: #0a20e9;
+    padding: 10px;
+    border: 2px solid #FF0000;
+    font-size: 1.5em;
+	font-weight: bold;
+    margin-bottom: 20px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+	background-image: url('piscine_water.gif'); /* Replace with your own tiled image URL */
+	background-repeat: repeat; /* Make the background image tile */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    border: 3px solid #FF00FF;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #FFFF00;
+    font-size: 1.2em;
+}
+
+th {
+    background-color: #00FF00;
+    color: #FF00FF;
+}
+
+td {
+    background-color: #FF6347; /* Tomato red */
+}
+
+.footer {
+    color: #e90a1d;
+	font-weight: 800;
+    margin-top: 50px;
+    text-align: center;
+
+}
+
+.blinking-gif {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { visibility: visible; }
+    50% { visibility: hidden; }
+    100% { visibility: visible; }
+}
+
+/* Blink text animation */
+@keyframes blinkText {
+    0% { color: #FF00FF; }
+    50% { color: #FFFF00; }
+    100% { color: #FF00FF; }
+}
